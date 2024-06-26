@@ -4,8 +4,10 @@
     <section-header v-model="model" />
 
     <!--TRACK ROW-->
-    <div class="row items-center no-wrap">
-      <div class="col-sm-2 q-pa-sm q-mr-sm text-center text-h4 calc-value">{{ value }}</div>
+    <div class="row items-start no-wrap">
+      <div class="col-shrink stat-container">
+        <calc-stat-box :value="value" />
+      </div>
 
       <div class="col-grow">
         <div class="row items-center">
@@ -13,7 +15,7 @@
           <span class="col-shrink q-pr-sm">TRAIT</span>
           <q-btn-toggle
             class="col"
-            v-model="model.mods"
+            v-model="model.trait"
             :options="[
               { label: '-2', value: -2 },
               { label: '-1', value: -1 },
@@ -29,13 +31,9 @@
           />
         </div>
 
-        <div class="row items-center justify-start">
-          <aptitude-track :boxes="track" />
-        </div>
+        <aptitude-track :boxes="track" />
 
-        <div class="row">
-          <q-input v-model="model.traits" label="Bonuses/Penalties" dense autogrow borderless />
-        </div>
+        <mod-box v-model="model.mods" />
       </div>
     </div>
     <q-separator />
@@ -47,12 +45,16 @@ import { computed } from 'vue';
 
 import { Aptitude } from 'src/components/models';
 
+import { modTotal } from 'src/lib/util';
+
 import SectionHeader from 'src/components/Widgets/SectionHeader.vue';
 import AptitudeTrack from 'src/components/Widgets/AptitudeTrack.vue';
+import CalcStatBox from 'src/components/Widgets/CalcStatBox.vue';
+import ModBox from 'src/components/Widgets/ModBox.vue';
 
 const model = defineModel<Aptitude>({ required: true });
 
-const value = computed((): number => +model.value.base + model.value.mods);
+const value = computed((): number => +model.value.base + model.value.trait + modTotal(model.value.mods));
 
 const track = computed((): boolean[] => {
   const t = new Array(20).fill(false);
@@ -64,8 +66,7 @@ const track = computed((): boolean[] => {
 </script>
 
 <style scoped>
-.calc-value {
-  border: 2px solid black;
-  border-radius: 30%;
+.stat-container {
+  margin-top: 13px;
 }
 </style>

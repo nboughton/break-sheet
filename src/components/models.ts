@@ -39,9 +39,14 @@ export interface Character {
   xp: XP;
 }
 
+export interface Mod {
+  name: string;
+  value: number;
+}
+
 export interface Aptitude extends SectionHeader {
-  traits: string;
-  mods: number; // bonuses/penalties
+  trait: number;
+  mods: Mod[]; // bonuses/penalties
 }
 
 export interface Attacks extends SectionHeader {
@@ -55,20 +60,18 @@ export interface Weapon {
 }
 
 export interface Hearts extends SectionHeader {
-  mods: number; // bonuses/penalties
+  mods: Mod[]; // bonuses/penalties
   injuries: string;
 }
 
 export interface Defense extends SectionHeader {
-  mods: number; // bonuses/penalties
+  mods: Mod[]; // bonuses/penalties
   notes: string;
 }
 
-export type SpeedRating = 'Slow' | 'Average' | 'Fast' | 'Very Fast';
-
-export interface Speed {
-  base: SpeedRating;
+export interface Speed extends SectionHeader {
   mods: string; // notes
+  selected: string;
 }
 
 export interface Inventory {
