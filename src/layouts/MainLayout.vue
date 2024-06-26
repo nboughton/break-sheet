@@ -8,7 +8,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer v-model="leftDrawerOpen" :show-if-above="false" bordered>
       <q-list>
         <q-btn
           class="full-width"

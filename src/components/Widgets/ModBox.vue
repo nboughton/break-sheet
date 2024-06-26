@@ -1,7 +1,7 @@
 <template>
   <div class="column">
     <div class="row items-center">
-      <div class="col-grow">Bonuses/Penalties</div>
+      <div class="col-grow text-subtitle2">{{ title ? title : 'Bonuses/Penalties' }}</div>
       <q-btn class="col-shrink" icon="mdi-plus-circle" dense flat rounded @click="model.push(create.mod())" />
     </div>
 
@@ -19,6 +19,10 @@ import { create } from 'src/lib/create';
 import ModEntry from 'src/components/Widgets/ModEntry.vue';
 
 const model = defineModel<Mod[]>({ required: true });
+
+defineProps<{
+  title?: string;
+}>();
 
 const $q = useQuasar();
 const deleteMod = (i: number) =>

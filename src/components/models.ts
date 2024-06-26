@@ -30,9 +30,8 @@ export interface Character {
   defense: Defense;
   speed: Speed;
   quirk: string;
-  gear: string;
   inventory: Inventory;
-  abilities: string[];
+  abilities: string;
   bonds: string;
   allegiance: Allegiance;
   wealth: Wealth;
@@ -74,9 +73,9 @@ export interface Speed extends SectionHeader {
   selected: string;
 }
 
-export interface Inventory {
-  base: number;
-  additional: number;
+export interface Inventory extends SectionHeader {
+  worn: string;
+  mods: Mod[];
   slots: string[];
 }
 

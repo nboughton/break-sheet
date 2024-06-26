@@ -1,8 +1,9 @@
 <template>
-  <div class="column q-mb-xs">
+  <div class="column q-mb-md">
     <section-header v-model="app.char.attacks" icon="mdi-sword" />
     <div class="row items-center">
-      <div class="col-grow">Weapons</div>
+      <div class="col-shrink text-subtitle2 text-h6">Weapons</div>
+      <q-separator class="col-grow" />
       <q-btn
         class="col-shrink"
         icon="mdi-plus-circle"

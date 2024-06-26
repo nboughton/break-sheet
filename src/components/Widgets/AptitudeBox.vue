@@ -9,7 +9,7 @@
         <calc-stat-box :value="value" />
       </div>
 
-      <div class="col-grow">
+      <div class="col">
         <div class="row items-center">
           <!--TRAIT LINE-->
           <span class="col-shrink q-pr-sm">TRAIT</span>

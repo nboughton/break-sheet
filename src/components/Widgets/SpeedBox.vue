@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-sm">
+  <div class="column q-mb-md">
     <section-header v-model="app.char.speed" icon="mdi-run" />
 
     <div class="row">

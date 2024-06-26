@@ -1,15 +1,16 @@
 <template>
-  <div class="column q-mb-sm">
+  <div class="column q-mb-md">
     <section-header v-model="app.char.hearts" icon="mdi-heart" />
 
-    <div class="row">
+    <div class="row no-wrap">
       <div class="col-shrink q-mr-sm">
         <calc-stat-box :value="value" />
       </div>
 
-      <div class="col-grow">
+      <div class="col">
         <hearts-track :hearts="track" />
         <mod-box v-model="app.char.hearts.mods" />
+        <q-input v-model="app.char.hearts.injuries" label="Injuries" autogrow dense />
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-sm">
+  <div class="column q-mb-md">
     <section-header v-model="app.char.defense" icon="mdi-shield" />
 
     <div class="row">
@@ -7,7 +7,7 @@
         <calc-stat-box :value="value" />
       </div>
 
-      <div class="col-grow">
+      <div class="col">
         <mod-box v-model="app.char.defense.mods" />
       </div>
     </div>

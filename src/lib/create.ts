@@ -81,13 +81,15 @@ export const create = {
       selected: 'Average',
     },
     quirk: '',
-    gear: '',
     inventory: {
+      name: 'Inventory Slots',
+      subtitle: '',
       base: 10,
-      additional: 0,
+      worn: '',
+      mods: [],
       slots: [],
     },
-    abilities: [],
+    abilities: '',
     bonds: '',
     allegiance: {
       dark: 0,
