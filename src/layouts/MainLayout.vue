@@ -102,7 +102,7 @@
         <p>This app is not affiliated with, or endorsed by the copyright holders.</p>
         <p>
           Please submit feature requests and bug reports to the
-          <a href="https://github.com/nicholasboughton/break-sheet" target="_blank">github project</a>
+          <a href="https://github.com/nboughton/break-sheet" target="_blank">github project</a>
         </p>
         <p>
           If you like my work and want support it, you can <a href="https://ko-fi.com/tiberianpun">buy me a coffee</a>
