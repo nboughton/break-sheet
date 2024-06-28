@@ -1,5 +1,6 @@
 <template>
   <q-page class="column">
+    <stats-compact />
     <q-tab-panels v-model="app.conf.tab" swipeable animated>
       <q-tab-panel class="row justify-evenly" name="who">
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
@@ -46,6 +47,7 @@ import GearBox from 'src/components/Widgets/GearBox.vue';
 import QuirkBox from 'src/components/Widgets/QuirkBox.vue';
 import AbilitiesBox from 'src/components/Widgets/AbilitiesBox.vue';
 import BondsBox from 'src/components/Widgets/BondsBox.vue';
+import StatsCompact from 'src/components/Widgets/StatsCompact.vue';
 
 const app = useBreakStore();
 </script>

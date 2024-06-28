@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar style="background-color: #24aea6">
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title> BREAK!! </q-toolbar-title>
@@ -14,7 +14,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" :show-if-above="false" bordered>
+    <q-drawer v-model="leftDrawerOpen" :show-if-above="false" bordered class="column justify-between">
       <q-list>
         <q-btn
           class="full-width"
@@ -70,6 +70,17 @@
           <q-item-section> About </q-item-section>
         </q-item>
       </q-list>
+
+      <q-list class="self-end">
+        <q-item>
+          <q-item-section
+            ><p class="text-justify">
+              This is an independent product published under BREAK!! RPG's Non-Commercial License and is not affiliated
+              with BREAK!!'s creators or publishers.
+            </p></q-item-section
+          >
+        </q-item>
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -105,7 +116,10 @@
 
       <q-card-section>
         <p>BREAK!! TTRPG is copyright &copy; Reynaldo Madriñan &amp; Carlo Tartaglia 2023.</p>
-        <p>This app is not affiliated with, or endorsed by the copyright holders.</p>
+        <p>
+          This is an independent product published under BREAK!! RPG's Non-Commercial License and is not affiliated with
+          BREAK!!'s creators or publishers.
+        </p>
         <p>
           Please submit feature requests and bug reports to the
           <a href="https://github.com/nboughton/break-sheet" target="_blank">github project</a>

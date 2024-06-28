@@ -1,5 +1,5 @@
 <template>
-  <div class="column">
+  <div class="column q-mb-sm">
     <title-bar title="XP" />
     <div class="row">
       <q-input class="col" v-model.number="app.char.xp.current" label="CURRENT XP" />
