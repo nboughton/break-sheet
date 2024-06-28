@@ -1,7 +1,8 @@
 <template>
   <div class="column">
     <div class="row items-center">
-      <div class="col-grow text-subtitle2">{{ title ? title : 'Bonuses/Penalties' }}</div>
+      <div class="col-shrink text-subtitle2">{{ title ? title : 'Bonuses/Penalties' }}</div>
+      <q-separator class="col" />
       <q-btn class="col-shrink" icon="mdi-plus-circle" dense flat rounded @click="model.push(create.mod())" />
     </div>
 

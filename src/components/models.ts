@@ -76,7 +76,12 @@ export interface Speed extends SectionHeader {
 export interface Inventory extends SectionHeader {
   worn: string;
   mods: Mod[];
-  slots: string[];
+  slots: InventoryItem[];
+}
+
+export interface InventoryItem {
+  name: string;
+  slots: number;
 }
 
 export interface Wealth {

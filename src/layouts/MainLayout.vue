@@ -53,6 +53,16 @@
             <q-tooltip>Load previously exported character data</q-tooltip>
           </q-item-section>
         </q-item>
+
+        <q-separator />
+
+        <q-item clickable v-ripple @click="showAbout = true">
+          <q-item-section avatar>
+            <q-icon name="mdi-information" />
+          </q-item-section>
+
+          <q-item-section> About </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -61,9 +71,9 @@
     </q-page-container>
   </q-layout>
 
-  <q-dialog v-model="showDataLoad" maximized>
+  <q-dialog v-model="showDataLoad" :maximized="$q.screen.lt.sm">
     <q-card>
-      <q-card-section class="text-center text-bold bg-secondary">Load Character Data</q-card-section>
+      <q-card-section class="text-center text-h6 bg-grey text-white">Load Character Data</q-card-section>
 
       <q-card-section class="text-subtitle">
         Please bear in mind that this data will overwrite any existing versions of the same character.
@@ -77,6 +87,27 @@
         <q-btn label="load" color="primary" @click="loadData" flat />
         <q-btn label="close" color="warning" @click="showDataLoad = false" flat />
       </q-card-actions>
+    </q-card>
+  </q-dialog>
+
+  <q-dialog v-model="showAbout" :maximized="$q.screen.lt.sm">
+    <q-card>
+      <q-card-section class="row text-center text-h6 bg-grey text-white items-center">
+        <div class="col">About</div>
+        <q-btn icon="mdi-close-circle" flat rounded dense @click="showAbout = false" />
+      </q-card-section>
+
+      <q-card-section>
+        <p>BREAK!! TTRPG is copyright &copy; Reynaldo Madriñan &amp; Carlo Tartaglia 2023.</p>
+        <p>This app is not affiliated with, or endorsed by the copyright holders.</p>
+        <p>
+          Please submit feature requests and bug reports to the
+          <a href="https://github.com/nicholasboughton/break-sheet" target="_blank">github project</a>
+        </p>
+        <p>
+          If you like my work and want support it, you can <a href="https://ko-fi.com/tiberianpun">buy me a coffee</a>
+        </p>
+      </q-card-section>
     </q-card>
   </q-dialog>
 </template>
@@ -112,6 +143,8 @@ const loadData = () => {
   };
   reader.readAsText(f);
 };
+
+const showAbout = ref(false);
 
 const leftDrawerOpen = ref(false);
 

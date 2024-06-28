@@ -1,37 +1,37 @@
 <template>
   <q-page class="column">
     <q-tabs v-model="tab" dense>
-      <q-tab name="identity" label="Identity & Aptitudes" />
-      <q-tab name="combat" label="Combat" />
-      <q-tab name="test" label="Testing" />
+      <q-tab name="who" label="Identity" />
+      <q-tab name="fight" label="Combat" />
+      <q-tab name="gear" label="Gear & Social" />
     </q-tabs>
 
     <q-tab-panels v-model="tab">
-      <q-tab-panel class="row justify-evenly" name="identity">
-        <div class="col-xs-12 col-sm-6">
+      <q-tab-panel class="row justify-evenly q-pt-none" name="who">
+        <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
           <identity-pane />
+          <abilities-box />
+          <xp-box />
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pl-xs' : ''}`">
           <aptitudes-pane />
         </div>
       </q-tab-panel>
 
-      <q-tab-panel name="combat">
+      <q-tab-panel class="row justify-evenly q-pt-none" name="fight">
         <combat-pane />
       </q-tab-panel>
 
-      <q-tab-panel class="row justify-evenly" name="test">
+      <q-tab-panel class="row justify-evenly q-pt-none" name="gear">
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
-          <quirk-box />
-          <abilities-box />
-          <bonds-box />
-          <allegiance-box />
+          <gear-box />
+          <wealth-box />
         </div>
 
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pl-xs' : ''}`">
-          <gear-box />
-          <wealth-box />
-          <xp-box />
+          <quirk-box />
+          <bonds-box />
+          <allegiance-box />
         </div>
       </q-tab-panel>
     </q-tab-panels>
@@ -53,5 +53,5 @@ import QuirkBox from 'src/components/Widgets/QuirkBox.vue';
 import AbilitiesBox from 'src/components/Widgets/AbilitiesBox.vue';
 import BondsBox from 'src/components/Widgets/BondsBox.vue';
 
-const tab = ref('identity');
+const tab = ref('who');
 </script>

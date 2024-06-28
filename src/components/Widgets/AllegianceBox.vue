@@ -1,12 +1,12 @@
 <template>
-  <div class="column">
+  <div class="column q-mb-sm">
     <title-bar title="Allegiance" />
 
     <div class="row justify-between">
-      <div class="column col-xs-6 col-sm-4 justify-around">
-        <div class="row items-center">
+      <div class="column col-6 justify-around left-box">
+        <div class="row items-center q-mb-sm">
           <q-input
-            class="col-xs-4 col-sm-3 q-mr-sm"
+            class="col-xs-4 col-sm-4 q-mr-sm"
             type="number"
             v-model.number="app.char.allegiance.dark"
             :min="0"
@@ -19,7 +19,7 @@
 
         <div class="row items-center">
           <q-input
-            class="col-xs-4 col-sm-3 q-mr-sm"
+            class="col-xs-4 col-sm-4 q-mr-sm"
             type="number"
             v-model.number="app.char.allegiance.bright"
             :min="0"
@@ -31,23 +31,26 @@
         </div>
       </div>
 
-      <!--q-separator vertical color="black" /-->
-
-      <div class="col-xs-6 col-sm-3 q-px-sm">
-        <q-option-group :model-value="allegiance" :options="options" />
-      </div>
-
-      <!--q-separator vertical color="black" /-->
-
-      <div class="col-xs-12 col-sm-4 q-px-sm">
+      <div class="col-6 q-pl-sm">
         <q-input v-model="app.char.allegiance.gifts" label="GIFTS" autogrow dense />
       </div>
     </div>
+
+    <q-btn-toggle
+      class="row q-my-sm"
+      :model-value="allegiance"
+      :options="options"
+      toggle-color="black"
+      toggle-text-color="white"
+      unelevated
+      spread
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+
 import { useBreakStore } from 'src/stores/break-store';
 
 import TitleBar from 'src/components/Widgets/TitleBar.vue';
@@ -68,3 +71,9 @@ const allegiance = computed((): string => {
   return dark + bright < 2 ? 'Unaligned' : dark - bright >= 2 ? 'Dark' : bright - dark >= 2 ? 'Bright' : 'Twilight';
 });
 </script>
+
+<style scoped>
+.left-box {
+  border-right: 1px solid black;
+}
+</style>

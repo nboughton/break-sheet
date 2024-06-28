@@ -1,5 +1,5 @@
 import { uid } from 'quasar';
-import { Character, Mod, Weapon } from 'src/components/models';
+import { Character, InventoryItem, Mod, Weapon } from 'src/components/models';
 
 export const create = {
   character: (): Character => ({
@@ -18,35 +18,35 @@ export const create = {
     },
     aptitudes: [
       {
-        name: 'Might',
+        name: 'MIGHT',
         subtitle: 'Smash, crush, lift',
         base: 0,
         mods: [],
         trait: 0,
       },
       {
-        name: 'Deftness',
+        name: 'DEFTNESS',
         subtitle: 'Dodge, sneak, leap',
         base: 0,
         mods: [],
         trait: 0,
       },
       {
-        name: 'Grit',
+        name: 'GRIT',
         subtitle: 'Cling, persist, press on',
         base: 0,
         mods: [],
         trait: 0,
       },
       {
-        name: 'Insight',
+        name: 'INSIGHT',
         subtitle: 'Notice, know, remember',
         base: 0,
         mods: [],
         trait: 0,
       },
       {
-        name: 'Aura',
+        name: 'AURA',
         subtitle: 'Persuade, inspire, terrify',
         base: 0,
         mods: [],
@@ -54,27 +54,27 @@ export const create = {
       },
     ],
     attacks: {
-      name: 'Attack Bonus',
+      name: 'ATTACK BONUS',
       subtitle: 'Add to my attacks rolls',
       base: 0,
       weapons: [],
     },
     hearts: {
-      name: 'Hearts',
+      name: 'HEARTS TOTAL',
       subtitle: 'Protecting me from injury',
       base: 0,
       mods: [],
       injuries: '',
     },
     defense: {
-      name: 'Defense',
+      name: 'DEFENSE RATING',
       subtitle: 'Match or best this to harm me',
       base: 0,
       mods: [],
       notes: '',
     },
     speed: {
-      name: 'Speed Rating',
+      name: 'SPEED RATING',
       subtitle: 'Sets areas I can move through',
       base: 'Average',
       mods: '',
@@ -82,7 +82,7 @@ export const create = {
     },
     quirk: '',
     inventory: {
-      name: 'Inventory Slots',
+      name: 'INVENTORY SLOTS',
       subtitle: '',
       base: 10,
       worn: '',
@@ -117,4 +117,6 @@ export const create = {
     bonuses: 0,
     extra: 0,
   }),
+
+  item: (): InventoryItem => ({ name: '', slots: 1 }),
 };

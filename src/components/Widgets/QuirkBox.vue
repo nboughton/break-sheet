@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-md">
+  <div class="column q-mb-sm">
     <title-bar title="QUIRK" />
 
     <q-input class="row" v-model="app.char.quirk" autogrow outlined />

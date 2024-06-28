@@ -1,29 +1,28 @@
 <template>
-  <collapsible-section class="column q-px-xs" title="IDENTITY">
-    <template v-slot:content>
-      <q-input class="row" v-model="app.char.identity.name" label="NAME" />
-      <div class="row">
-        <q-input class="col" v-model="app.char.identity.calling" label="CALLING" />
-        <q-input class="col-4" type="number" v-model.number="app.char.identity.rank" label="RANK" />
-      </div>
-      <div class="row">
-        <q-input class="col" v-model="app.char.identity.species" label="SPECIES" />
-        <q-select class="col-4" v-model="app.char.identity.size" :options="['Small', 'Medium', 'Large']" label="SIZE" />
-      </div>
-      <q-input class="row" v-model="app.char.identity.homeland" label="HOMELAND" />
-      <q-input class="row" v-model="app.char.identity.languages" label="LANGUAGES" />
-      <q-input class="row" v-model="app.char.identity.history" label="HISTORY" />
-      <q-input class="row" v-model="app.char.identity.purviews" label="PURVIEWS" autogrow />
-      <q-input class="row" v-model="app.char.identity.description" label="DESCRIPTION" autogrow />
-    </template>
-  </collapsible-section>
+  <div class="column q-mb-sm">
+    <title-bar title="IDENTITY" />
+
+    <q-input class="row" v-model="app.char.identity.name" label="NAME" />
+    <div class="row">
+      <q-input class="col" v-model="app.char.identity.calling" label="CALLING" />
+      <q-input class="col-4" type="number" v-model.number="app.char.identity.rank" label="RANK" />
+    </div>
+    <div class="row">
+      <q-input class="col" v-model="app.char.identity.species" label="SPECIES" />
+      <q-select class="col-4" v-model="app.char.identity.size" :options="['Small', 'Medium', 'Large']" label="SIZE" />
+    </div>
+    <q-input class="row" v-model="app.char.identity.homeland" label="HOMELAND" />
+    <q-input class="row" v-model="app.char.identity.languages" label="LANGUAGES" />
+    <q-input class="row" v-model="app.char.identity.history" label="HISTORY" />
+    <q-input class="row" v-model="app.char.identity.purviews" label="PURVIEWS" autogrow />
+    <q-input class="row" v-model="app.char.identity.description" label="DESCRIPTION" autogrow />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useBreakStore } from 'src/stores/break-store';
 
-//import TitleBar from './Widgets/TitleBar.vue';
-import CollapsibleSection from './Widgets/CollapsibleSection.vue';
+import TitleBar from './Widgets/TitleBar.vue';
 
 const app = useBreakStore();
 </script>

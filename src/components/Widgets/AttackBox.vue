@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-md">
+  <div class="column q-mb-sm">
     <section-header v-model="app.char.attacks" icon="mdi-sword" />
     <div class="row items-center">
       <div class="col-shrink text-subtitle2 text-h6">Weapons</div>

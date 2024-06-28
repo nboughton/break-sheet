@@ -36,8 +36,8 @@
         <mod-box v-model="model.mods" />
       </div>
     </div>
-    <q-separator />
   </div>
+  <q-separator color="black" />
 </template>
 
 <script setup lang="ts">

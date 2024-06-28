@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-md">
+  <div class="column q-mb-sm">
     <title-bar title="SOCIAL BONDS & REPUTATIONS" />
 
     <q-input class="row" v-model="app.char.bonds" autogrow outlined />

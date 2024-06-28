@@ -1,5 +1,5 @@
 <template>
-  <div class="column">
+  <div class="column q-mb-sm">
     <title-bar title="Wealth" />
 
     <div class="row text-subtitle1">100 Stones = 1 Coin, 100 Coins = 1 Gem</div>
