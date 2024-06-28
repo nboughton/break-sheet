@@ -1,7 +1,15 @@
 <template>
   <div class="column q-mb-sm">
     <title-bar title="Allegiance" />
-
+    <q-btn-toggle
+      class="row q-mb-sm rounded-borders"
+      :model-value="allegiance"
+      :options="options"
+      toggle-color="black"
+      toggle-text-color="white"
+      unelevated
+      spread
+    />
     <div class="row justify-between">
       <div class="column col-6 justify-around left-box">
         <div class="row items-center q-mb-sm">
@@ -35,16 +43,6 @@
         <q-input v-model="app.char.allegiance.gifts" label="GIFTS" autogrow dense />
       </div>
     </div>
-
-    <q-btn-toggle
-      class="row q-my-sm"
-      :model-value="allegiance"
-      :options="options"
-      toggle-color="black"
-      toggle-text-color="white"
-      unelevated
-      spread
-    />
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 export interface AppStore {
   conf: {
     char: number;
+    tab: string;
   };
   characters: Character[];
 }

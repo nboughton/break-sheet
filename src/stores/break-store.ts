@@ -7,6 +7,7 @@ export const useBreakStore = defineStore('break-sheet', {
     <AppStore>{
       conf: {
         char: 0,
+        tab: 'who',
       },
       characters: [],
     },

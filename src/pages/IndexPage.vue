@@ -1,13 +1,7 @@
 <template>
   <q-page class="column">
-    <q-tabs v-model="tab" dense>
-      <q-tab name="who" label="Identity" />
-      <q-tab name="fight" label="Combat" />
-      <q-tab name="gear" label="Gear & Social" />
-    </q-tabs>
-
-    <q-tab-panels v-model="tab">
-      <q-tab-panel class="row justify-evenly q-pt-none" name="who">
+    <q-tab-panels v-model="app.conf.tab" swipeable animated>
+      <q-tab-panel class="row justify-evenly" name="who">
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
           <identity-pane />
           <abilities-box />
@@ -18,11 +12,11 @@
         </div>
       </q-tab-panel>
 
-      <q-tab-panel class="row justify-evenly q-pt-none" name="fight">
+      <q-tab-panel class="row justify-evenly" name="fight">
         <combat-pane />
       </q-tab-panel>
 
-      <q-tab-panel class="row justify-evenly q-pt-none" name="gear">
+      <q-tab-panel class="row justify-evenly" name="gear">
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
           <gear-box />
           <wealth-box />
@@ -39,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useBreakStore } from 'src/stores/break-store';
 
 import IdentityPane from 'src/components/IdentityPane.vue';
 import AptitudesPane from 'src/components/AptitudesPane.vue';
@@ -53,5 +47,5 @@ import QuirkBox from 'src/components/Widgets/QuirkBox.vue';
 import AbilitiesBox from 'src/components/Widgets/AbilitiesBox.vue';
 import BondsBox from 'src/components/Widgets/BondsBox.vue';
 
-const tab = ref('who');
+const app = useBreakStore();
 </script>

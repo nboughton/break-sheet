@@ -5,6 +5,12 @@
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title> BREAK!! </q-toolbar-title>
+
+        <q-tabs v-model="app.conf.tab" indicator-color="transparent" shrink stretch>
+          <q-tab name="who" label="Identity" />
+          <q-tab name="fight" label="Combat" />
+          <q-tab name="gear" label="Gear & Social" />
+        </q-tabs>
       </q-toolbar>
     </q-header>
 

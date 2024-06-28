@@ -2,7 +2,7 @@
   <q-expansion-item
     :label="title"
     :header-inset-level="0"
-    header-class="bg-grey text-h5 text-white rounded-corners"
+    header-class="bg-grey text-h5 text-white rounded-borders"
     default-opened
     expand-icon-class="text-white"
   >
