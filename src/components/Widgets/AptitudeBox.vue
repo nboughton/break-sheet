@@ -1,7 +1,7 @@
 <template>
   <div class="column q-mb-md">
     <!--TITLE ROW-->
-    <section-header v-model="model" />
+    <section-header base-type="number" v-model="model" />
 
     <!--TRACK ROW-->
     <div class="row items-start no-wrap">

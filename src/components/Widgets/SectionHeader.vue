@@ -1,14 +1,14 @@
 <template>
   <div class="row items-center justify-between q-mb-xs">
     <div class="col-shrink q-mr-sm" v-if="icon != undefined">
-      <q-icon :name="icon" size="lg" />
+      <q-icon :name="icon" size="md" />
     </div>
     <div class="col-grow">
-      <div class="row text-h5">{{ model.name }}</div>
+      <div class="row text-h6">{{ model.name }}</div>
       <div class="row text-subtitle2">{{ model.subtitle }}</div>
     </div>
 
-    <div class="col-4" v-if="typeof model.base == 'number'">
+    <div class="col-4" v-if="baseType == 'number'">
       <q-input
         input-class="row items-center text-h5 text-center"
         type="number"
@@ -36,5 +36,6 @@ const model = defineModel<SectionHeader>({ required: true });
 
 defineProps<{
   icon?: string;
+  baseType: 'string' | 'number';
 }>();
 </script>

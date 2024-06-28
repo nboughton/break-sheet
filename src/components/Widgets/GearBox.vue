@@ -2,7 +2,7 @@
   <div class="column q-mb-sm">
     <title-bar title="GEAR" />
     <q-input class="row q-mb-sm" v-model="app.char.inventory.worn" label="WORN OUTFIT" autogrow />
-    <section-header v-model="app.char.inventory" />
+    <section-header base-type="number" v-model="app.char.inventory" />
 
     <div class="row">
       <div class="col-shrink q-mr-sm">

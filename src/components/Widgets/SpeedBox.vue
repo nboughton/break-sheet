@@ -1,6 +1,6 @@
 <template>
   <div class="column q-mb-md">
-    <section-header v-model="app.char.speed" icon="mdi-run" />
+    <section-header base-type="string" v-model="app.char.speed" icon="mdi-run" />
 
     <div class="row">
       <q-option-group class="col" v-model="app.char.speed.selected" :options="speeds" />

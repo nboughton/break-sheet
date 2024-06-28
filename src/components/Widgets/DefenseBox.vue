@@ -1,6 +1,6 @@
 <template>
   <div class="column q-mb-md">
-    <section-header v-model="app.char.defense" icon="mdi-shield" />
+    <section-header base-type="number" v-model="app.char.defense" icon="mdi-shield" />
 
     <div class="row">
       <div class="col-shrink q-mr-sm">

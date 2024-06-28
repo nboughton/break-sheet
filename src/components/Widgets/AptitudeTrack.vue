@@ -1,5 +1,5 @@
 <template>
-  <div class="row items-center q-my-xs">
+  <div class="row items-center q-my-xs no-wrap">
     <div class="col-grow" v-for="(b, i) in boxes" :key="i">
       <div class="row items-center no-wrap">
         <div class="col sep" v-if="i > 0 && i % 5 == 0"></div>
@@ -29,7 +29,7 @@ defineProps<{
 
 .sep {
   height: 2em;
-  min-width: 3px;
+  max-width: 2px;
   margin-left: 2px;
   margin-right: 2px;
   background-color: black;
