@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
+    "@quasar/icongenie": "^4.0.0",
     "pinia": "^2.0.11",
     "pinia-plugin-persistedstate": "^3.2.1",
     "quasar": "^2.6.0",
