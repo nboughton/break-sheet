@@ -33,10 +33,18 @@ export interface Character {
   quirk: string;
   inventory: Inventory;
   abilities: string;
+  abl: Ability[];
   bonds: string;
   allegiance: Allegiance;
   wealth: Wealth;
   xp: XP;
+}
+
+export interface Ability {
+  name: string;
+  type: 'Species' | 'Calling';
+  allegiance: 'Bright' | 'Dark' | 'None';
+  text: string;
 }
 
 export interface Mod {

@@ -1,5 +1,5 @@
 import { uid } from 'quasar';
-import { Character, InventoryItem, Mod, Weapon } from 'src/components/models';
+import { Ability, Character, InventoryItem, Mod, Weapon } from 'src/components/models';
 
 export const create = {
   character: (): Character => ({
@@ -90,6 +90,7 @@ export const create = {
       slots: [],
     },
     abilities: '',
+    abl: [],
     bonds: '',
     allegiance: {
       dark: 0,
@@ -119,4 +120,11 @@ export const create = {
   }),
 
   item: (): InventoryItem => ({ name: '', slots: 1 }),
+
+  ability: (): Ability => ({
+    name: 'New Ability',
+    type: 'Calling',
+    allegiance: 'None',
+    text: '',
+  }),
 };

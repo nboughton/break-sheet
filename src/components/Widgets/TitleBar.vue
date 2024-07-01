@@ -1,6 +1,7 @@
 <template>
   <div class="row section-title-bar text-white text-bold text-h5 rounded-borders q-pa-sm text-uppercase q-mb-sm">
-    {{ title }}
+    <span class="col">{{ title }}</span>
+    <slot class="col-shrink" name="button"></slot>
   </div>
 </template>
 
