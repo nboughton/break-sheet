@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column">
+  <q-page class="column bg-white">
     <stats-compact />
     <q-tab-panels v-model="app.conf.tab" swipeable animated>
       <q-tab-panel class="row justify-evenly" name="who">

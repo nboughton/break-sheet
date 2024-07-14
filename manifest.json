@@ -1,0 +1,12 @@
+{
+  "name": "BREAK Sheet",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "action": {
+    "title": "BREAK Sheet",
+    "icon": "/apps/break-sheet/icon.svg",
+    "popover": "/apps/break-sheet/",
+    "height": 600,
+    "width": 450
+  }
+}
