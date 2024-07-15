@@ -20,8 +20,8 @@ export const useBreakStore = defineStore('break-sheet', {
       const now = new Date();
       exportFile(
         `BreakCharacters-${now.getFullYear()}-${now.getMonth()}-${now.getDate()}.json`,
-        JSON.stringify({
-          chars: this.characters,
+        JSON.stringify(<AppStore>{
+          characters: this.characters,
           conf: this.conf,
         })
       );
@@ -29,6 +29,7 @@ export const useBreakStore = defineStore('break-sheet', {
 
     loadData(d: AppStore) {
       this.conf = d.conf;
+
       d.characters.forEach((lChar) => {
         let overwrite = false;
         this.characters.forEach((sChar, idx) => {
