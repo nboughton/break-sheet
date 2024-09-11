@@ -11,9 +11,9 @@
       <q-input class="col" v-model="app.char.identity.species" label="SPECIES" />
       <q-select class="col-4" v-model="app.char.identity.size" :options="['Small', 'Medium', 'Large']" label="SIZE" />
     </div>
-    <q-input class="row" v-model="app.char.identity.homeland" label="HOMELAND" />
-    <q-input class="row" v-model="app.char.identity.languages" label="LANGUAGES" />
-    <q-input class="row" v-model="app.char.identity.history" label="HISTORY" />
+    <q-input class="row" v-model="app.char.identity.homeland" label="HOMELAND" autogrow />
+    <q-input class="row" v-model="app.char.identity.languages" label="LANGUAGES" autogrow />
+    <q-input class="row" v-model="app.char.identity.history" label="HISTORY" autogrow />
     <q-input class="row" v-model="app.char.identity.purviews" label="PURVIEWS" autogrow />
     <q-input class="row" v-model="app.char.identity.description" label="DESCRIPTION" autogrow />
   </div>

@@ -1,6 +1,6 @@
 {
   "name": "break",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Break!! RPG Character Sheet",
   "productName": "Break!! RPG Character Sheet",
   "author": "Nick Boughton <nicholasboughton@gmail.com>",
@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
-    "@quasar/icongenie": "^4.0.0",
     "pinia": "^2.0.11",
     "pinia-plugin-persistedstate": "^3.2.1",
     "quasar": "^2.6.0",

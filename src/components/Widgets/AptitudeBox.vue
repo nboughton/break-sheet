@@ -1,5 +1,5 @@
 <template>
-  <div class="column q-mb-md">
+  <div class="column q-mb-md col-xs-12 col-sm-6 q-pa-sm">
     <!--TITLE ROW-->
     <section-header base-type="number" v-model="model" />
 

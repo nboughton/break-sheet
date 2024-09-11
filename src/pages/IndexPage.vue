@@ -5,29 +5,27 @@
       <q-tab-panel class="row justify-evenly" name="who">
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
           <identity-pane />
-          <abilities-box />
+          <quirk-box />
           <xp-box />
         </div>
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pl-xs' : ''}`">
-          <aptitudes-pane />
+          <abilities-box />
+          <bonds-box />
+          <allegiance-box />
         </div>
+      </q-tab-panel>
+
+      <q-tab-panel class="row justify-evenly" name="aptitudes">
+        <aptitudes-pane />
       </q-tab-panel>
 
       <q-tab-panel class="row justify-evenly" name="fight">
         <combat-pane />
       </q-tab-panel>
 
-      <q-tab-panel class="row justify-evenly" name="gear">
-        <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
-          <gear-box />
-          <wealth-box />
-        </div>
-
-        <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pl-xs' : ''}`">
-          <quirk-box />
-          <bonds-box />
-          <allegiance-box />
-        </div>
+      <q-tab-panel class="row column justify-evenly" name="gear">
+        <gear-box />
+        <wealth-box />
       </q-tab-panel>
     </q-tab-panels>
   </q-page>

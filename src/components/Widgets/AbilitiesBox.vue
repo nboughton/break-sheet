@@ -14,11 +14,12 @@
     </title-bar>
 
     <collapsible-section
-      header-class="ability-title-bar q-mb-sm"
+      header-class="ability-title-bar text-white text-bold  q-mb-sm"
       :default-opened="a.name == 'New Ability'"
       :title="a.name"
       v-for="(a, i) in app.char.abl"
       :key="i"
+      :caption="a.text"
     >
       <template v-slot:content>
         <div class="column">
@@ -71,5 +72,11 @@ const deleteAbility = (i: number) =>
   background: linear-gradient(to right, rgba(170, 61, 158, 1) 0%, rgba(0, 127, 196, 1) 100%);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.ability-title-bar .q-item__label--caption {
+  color: white;
 }
 </style>

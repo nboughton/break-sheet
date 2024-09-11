@@ -1,7 +1,9 @@
 <template>
   <div class="column q-mb-sm">
     <title-bar title="Aptitudes" />
-    <aptitude-box v-for="(apt, i) in app.char.aptitudes" :key="i" v-model="app.char.aptitudes[i]" />
+    <div class="row justify-between">
+      <aptitude-box v-for="(apt, i) in app.char.aptitudes" :key="i" v-model="app.char.aptitudes[i]" />
+    </div>
   </div>
 </template>
 

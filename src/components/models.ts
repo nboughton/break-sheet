@@ -11,6 +11,7 @@ export interface SectionHeader {
   subtitle: string;
   base: number | string;
 }
+
 export interface Character {
   id: string;
   identity: {

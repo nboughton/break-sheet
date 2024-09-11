@@ -1,16 +1,25 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar style="background-color: #24aea6">
+      <q-toolbar class="row justify-between" style="background-color: #24aea6">
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> BREAK!! </q-toolbar-title>
-
-        <q-tabs v-model="app.conf.tab" indicator-color="transparent" shrink stretch>
-          <q-tab name="who" label="Identity" />
-          <q-tab name="fight" label="Combat" />
-          <q-tab name="gear" label="Gear & Social" />
+        <q-tabs v-model="app.conf.tab" shrink stretch>
+          <q-tab name="who" :icon="showIcon('mdi-account-circle')" :label="showLabel('Identity')">
+            <q-tooltip>Identity, Quirk, XP, Social, Allegiance</q-tooltip>
+          </q-tab>
+          <q-tab name="aptitudes" :icon="showIcon('mdi-adjust')" :label="showLabel('Aptitudes')">
+            <q-tooltip>Aptitudes</q-tooltip>
+          </q-tab>
+          <q-tab name="fight" :icon="showIcon('mdi-sword-cross')" :label="showLabel('Combat')">
+            <q-tooltip>Combat</q-tooltip>
+          </q-tab>
+          <q-tab name="gear" :icon="showIcon('mdi-bag-personal')" :label="showLabel('Gear')">
+            <q-tooltip>Gear and Money</q-tooltip>
+          </q-tab>
         </q-tabs>
+
+        <div></div>
       </q-toolbar>
     </q-header>
 
@@ -167,6 +176,9 @@ const loadData = () => {
 const showAbout = ref(false);
 
 const leftDrawerOpen = ref(false);
+
+const showIcon = (icon: string): string | undefined => ($q.screen.lt.sm ? icon : undefined);
+const showLabel = (label: string): string | undefined => ($q.screen.gt.xs ? label : undefined);
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
