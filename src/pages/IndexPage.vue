@@ -3,34 +3,43 @@
     <stats-compact v-if="app.conf.tab != 'adversary'" />
     <q-tab-panels v-model="app.conf.tab" swipeable animated>
       <q-tab-panel v-if="app.char.adversary" class="column" name="adversary">
-        <q-input class="row" label="Name" v-model="app.char.identity.name" readonly borderless />
-        <q-input class="row" label="Description" v-model="app.char.identity.description" autogrow readonly borderless />
-
-        <q-separator class="row q-my-sm" />
-
-        <stats-compact v-if="app.conf.tab == 'adversary'" />
-
-        <q-separator class="row q-my-sm" />
-
-        <div class="row text-h6"><span class="col"> Attacks</span></div>
-        <div class="row" v-for="(a, i) in app.char.attacks.weapons" :key="`wpn-${i}`">
-          <q-input class="col-8" label="Name" :model-value="a.name" readonly dense borderless />
+        <div class="q-pa-md" ref="adversary">
+          <q-input class="row" label="Name" v-model="app.char.identity.name" readonly borderless />
           <q-input
-            class="col"
-            label="Atk"
-            :model-value="`+${a.bonuses + +app.char.attacks.base}`"
+            class="row"
+            label="Description"
+            v-model="app.char.identity.description"
+            autogrow
             readonly
-            dense
             borderless
           />
-          <q-input class="col" label="Extra Dmg." :model-value="a.extra" readonly dense borderless />
-        </div>
 
-        <q-separator class="row q-my-sm" />
+          <q-separator class="row q-my-sm" />
 
-        <div class="row text-h6"><span class="col">Abilities</span></div>
-        <div class="row" v-for="(a, i) in app.char.abl" :key="`abl-${i}`">
-          <span class="text-bold">{{ a.name }}:</span>&nbsp;<span class="text-italic">{{ a.text }}</span>
+          <stats-compact v-if="app.conf.tab == 'adversary'" />
+
+          <q-separator class="row q-my-sm" />
+
+          <div class="row text-h6"><span class="col"> Attacks</span></div>
+          <div class="row" v-for="(a, i) in app.char.attacks.weapons" :key="`wpn-${i}`">
+            <q-input class="col-8" label="Name" :model-value="a.name" readonly dense borderless />
+            <q-input
+              class="col"
+              label="Atk"
+              :model-value="`+${a.bonuses + +app.char.attacks.base}`"
+              readonly
+              dense
+              borderless
+            />
+            <q-input class="col" label="Extra Dmg." :model-value="a.extra" readonly dense borderless />
+          </div>
+
+          <q-separator class="row q-my-sm" />
+
+          <div class="row text-h6"><span class="col">Abilities</span></div>
+          <div class="row" v-for="(a, i) in app.char.abl" :key="`abl-${i}`">
+            <span class="text-bold">{{ a.name }}:</span>&nbsp;<span class="text-italic">{{ a.text }}</span>
+          </div>
         </div>
       </q-tab-panel>
 
@@ -60,11 +69,17 @@
         <wealth-box />
       </q-tab-panel>
     </q-tab-panels>
+    <q-btn v-if="app.conf.tab == 'adversary'" label="Export to png" @click="render" flat />
   </q-page>
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+
 import { useBreakStore } from 'src/stores/break-store';
+import { exportFile } from 'quasar';
+
+import { toBlob } from 'html-to-image';
 
 import IdentityPane from 'src/components/IdentityPane.vue';
 import AptitudesPane from 'src/components/AptitudesPane.vue';
@@ -80,4 +95,15 @@ import BondsBox from 'src/components/Widgets/BondsBox.vue';
 import StatsCompact from 'src/components/Widgets/StatsCompact.vue';
 
 const app = useBreakStore();
+
+const adversary = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  adversary.value;
+});
+
+const render = () =>
+  toBlob(adversary.value as HTMLElement)
+    .then((blob) => exportFile('Adversary-card.png', blob as Blob))
+    .catch((err) => console.error(err));
 </script>
