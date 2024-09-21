@@ -1,6 +1,7 @@
 <template>
   <div class="row q-mb-xs">
     <q-input class="col-grow" label="Weapon" v-model="model.name" />
+    <q-input class="col" input-class="text-center text-h6" label="Range" type="number" v-model="model.range" />
     <q-input
       class="col"
       input-class="text-center text-h6"
@@ -25,6 +26,7 @@
     />
     <q-btn class="col-shrink q-ml-xs" icon="mdi-delete" flat dense rounded @click="emit('delete')" />
   </div>
+  <q-input class="row" label="Description" v-model="model.description" borderless autogrow />
 </template>
 
 <script setup lang="ts">

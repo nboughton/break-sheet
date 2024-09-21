@@ -67,6 +67,8 @@ export interface Weapon {
   name: string;
   bonuses: number;
   extra: number;
+  range?: number;
+  description?: string;
 }
 
 export interface Hearts extends SectionHeader {
