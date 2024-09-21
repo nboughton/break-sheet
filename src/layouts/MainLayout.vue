@@ -84,7 +84,7 @@
             <q-icon name="mdi-cog" />
           </q-item-section>
           <q-item-section>
-            <q-toggle label="Adverary" left-label v-model="app.char.adversary" />
+            <q-toggle label="Adversary" left-label v-model="app.char.adversary" />
           </q-item-section>
         </q-item>
 
