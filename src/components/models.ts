@@ -14,6 +14,7 @@ export interface SectionHeader {
 
 export interface Character {
   id: string;
+  adversary?: boolean;
   identity: {
     name: string;
     calling: string;

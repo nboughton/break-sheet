@@ -1,7 +1,39 @@
 <template>
   <q-page class="column bg-white">
-    <stats-compact />
+    <stats-compact v-if="app.conf.tab != 'adversary'" />
     <q-tab-panels v-model="app.conf.tab" swipeable animated>
+      <q-tab-panel v-if="app.char.adversary" class="column" name="adversary">
+        <q-input class="row" label="Name" v-model="app.char.identity.name" readonly borderless />
+        <q-input class="row" label="Description" v-model="app.char.identity.description" autogrow readonly borderless />
+
+        <q-separator class="row q-my-sm" />
+
+        <stats-compact v-if="app.conf.tab == 'adversary'" />
+
+        <q-separator class="row q-my-sm" />
+
+        <div class="row text-h6"><span class="col"> Attacks</span></div>
+        <div class="row" v-for="(a, i) in app.char.attacks.weapons" :key="`wpn-${i}`">
+          <q-input class="col-8" label="Name" :model-value="a.name" readonly dense borderless />
+          <q-input
+            class="col"
+            label="Atk"
+            :model-value="`+${a.bonuses + +app.char.attacks.base}`"
+            readonly
+            dense
+            borderless
+          />
+          <q-input class="col" label="Extra Dmg." :model-value="a.extra" readonly dense borderless />
+        </div>
+
+        <q-separator class="row q-my-sm" />
+
+        <div class="row text-h6"><span class="col">Abilities</span></div>
+        <div class="row" v-for="(a, i) in app.char.abl" :key="`abl-${i}`">
+          <span class="text-bold">{{ a.name }}:</span>&nbsp;<span class="text-italic">{{ a.text }}</span>
+        </div>
+      </q-tab-panel>
+
       <q-tab-panel class="row justify-evenly" name="who">
         <div :class="`col-xs-12 col-sm-6 ${$q.screen.gt.xs ? 'q-pr-xs' : ''}`">
           <identity-pane />

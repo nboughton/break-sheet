@@ -5,6 +5,14 @@
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-tabs v-model="app.conf.tab" shrink stretch>
+          <q-tab
+            v-if="app.char.adversary"
+            name="adversary"
+            :icon="showIcon('mdi-shield-account')"
+            :label="showLabel('Adversary')"
+          >
+            <q-tooltip>Adversary Summary</q-tooltip>
+          </q-tab>
           <q-tab name="who" :icon="showIcon('mdi-account-circle')" :label="showLabel('Identity')">
             <q-tooltip>Identity, Quirk, XP, Social, Allegiance</q-tooltip>
           </q-tab>
@@ -66,6 +74,17 @@
           <q-item-section>
             Load Character Data
             <q-tooltip>Load previously exported character data</q-tooltip>
+          </q-item-section>
+        </q-item>
+
+        <q-separator />
+
+        <q-item>
+          <q-item-section avatar>
+            <q-icon name="mdi-cog" />
+          </q-item-section>
+          <q-item-section>
+            <q-toggle label="Adverary" left-label v-model="app.char.adversary" />
           </q-item-section>
         </q-item>
 
