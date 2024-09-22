@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-mb-xs">
+  <div class="row">
     <q-input class="col-grow" label="Weapon" v-model="model.name" />
     <q-input class="col" input-class="text-center text-h6" label="Range" type="number" v-model="model.range" />
     <q-input

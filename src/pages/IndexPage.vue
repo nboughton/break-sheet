@@ -2,9 +2,9 @@
   <q-page class="column bg-white">
     <stats-compact v-if="app.conf.tab != 'adversary'" />
     <q-tab-panels v-model="app.conf.tab" swipeable animated>
-      <q-tab-panel v-if="app.char.adversary" class="column" name="adversary">
-        <div class="q-pa-md" ref="adversary">
-          <q-input class="row" label="Name" v-model="app.char.identity.name" readonly borderless />
+      <q-tab-panel v-if="app.char.adversary" class="column items-center" name="adversary">
+        <div class="q-pa-md" ref="adversary" style="max-width: 400px">
+          <q-input class="row" input-class="text-h5" v-model="app.char.identity.name" readonly borderless />
           <q-input
             class="row"
             label="Description"
@@ -16,12 +16,17 @@
 
           <q-separator class="row q-my-sm" />
 
-          <stats-compact v-if="app.conf.tab == 'adversary'" />
+          <stats-compact adversary />
 
           <q-separator class="row q-my-sm" />
 
           <div class="row text-h6"><span class="col"> Attacks</span></div>
-          <div class="row" v-for="(a, i) in app.char.attacks.weapons" :key="`wpn-${i}`">
+          <div
+            class="row"
+            v-for="(a, i) in app.char.attacks.weapons"
+            :key="`wpn-${i}`"
+            :style="i < app.char.attacks.weapons.length - 1 ? 'border-bottom: 1px solid lightgrey' : ''"
+          >
             <q-input class="col-6" label="Name" :model-value="a.name" readonly dense borderless />
             <q-input class="col" label="Range" :model-value="a.range" readonly dense borderless />
             <q-input
@@ -33,30 +38,13 @@
               borderless
             />
             <q-input class="col" label="Extra Dmg." :model-value="a.extra" readonly dense borderless />
-            <q-input
-              class="col-12"
-              label="Description"
-              :model-value="a.description"
-              readonly
-              dense
-              autogrow
-              borderless
-            />
+            <div class="col-12" style="white-space: pre-wrap">{{ a.description }}</div>
+            <q-separator v-if="i < app.char.attacks.weapons.length" class="row" />
           </div>
 
           <q-separator class="row q-my-sm" />
 
-          <div class="row text-h6"><span class="col">Abilities</span></div>
-          <q-input
-            class="row"
-            v-for="(a, i) in app.char.abl"
-            :key="`abl-${i}`"
-            :label="a.name"
-            :model-value="a.text"
-            borderless
-            dense
-            autogrow
-          />
+          <abilities-box />
         </div>
       </q-tab-panel>
 
@@ -124,8 +112,8 @@ onMounted(() => {
 });
 
 const render = () =>
-  toBlob(adversary.value as HTMLElement)
-    .then((blob) => exportFile('Adversary-card.png', blob as Blob))
+  toBlob(adversary.value as HTMLElement, { backgroundColor: 'white' })
+    .then((blob) => exportFile(`${app.char.identity.name}.png`, blob as Blob))
     .catch((err) => console.error(err));
 
 const jsonExport = () => {
@@ -141,6 +129,6 @@ const jsonExport = () => {
     abilities: app.char.abl.map((a) => ({ name: a.name, text: a.text })),
   };
 
-  exportFile('Adversary.json', JSON.stringify(d));
+  exportFile(`${d.name}.json`, JSON.stringify(d));
 };
 </script>
