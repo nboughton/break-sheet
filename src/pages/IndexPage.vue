@@ -44,7 +44,7 @@
 
           <q-separator class="row q-my-sm" />
 
-          <abilities-box />
+          <abilities-box adversary />
         </div>
       </q-tab-panel>
 
@@ -75,8 +75,7 @@
       </q-tab-panel>
     </q-tab-panels>
     <div class="row" v-if="app.conf.tab == 'adversary'">
-      <q-btn class="col" label="Export to png" @click="render" flat />
-      <q-btn class="col" label="Export to JSON" @click="jsonExport" flat />
+      <q-btn class="col" label="Export to png" @click="exportPNG" flat />
     </div>
   </q-page>
 </template>
@@ -85,9 +84,8 @@
 import { onMounted, ref } from 'vue';
 
 import { useBreakStore } from 'src/stores/break-store';
-import { exportFile } from 'quasar';
 
-import { modTotal } from 'src/lib/util';
+import { exportFile } from 'quasar';
 import { toBlob } from 'html-to-image';
 
 import IdentityPane from 'src/components/IdentityPane.vue';
@@ -111,24 +109,8 @@ onMounted(() => {
   adversary.value;
 });
 
-const render = () =>
+const exportPNG = () =>
   toBlob(adversary.value as HTMLElement, { backgroundColor: 'white' })
     .then((blob) => exportFile(`${app.char.identity.name}.png`, blob as Blob))
     .catch((err) => console.error(err));
-
-const jsonExport = () => {
-  const d = {
-    name: app.char.identity.name,
-    description: app.char.identity.description,
-    aptitudes: app.char.aptitudes.map((a) => ({ name: a.name, value: +a.base + a.trait + modTotal(a.mods) })),
-    attack: app.char.attacks.base,
-    weapons: app.char.attacks.weapons,
-    defense: +app.char.defense.base + modTotal(app.char.defense.mods),
-    hearts: +app.char.hearts.base + modTotal(app.char.hearts.mods),
-    speed: app.char.speed.base,
-    abilities: app.char.abl.map((a) => ({ name: a.name, text: a.text })),
-  };
-
-  exportFile(`${d.name}.json`, JSON.stringify(d));
-};
 </script>

@@ -9,7 +9,12 @@
     </div>
     <div class="row">
       <q-input class="col" v-model="app.char.identity.species" label="SPECIES" />
-      <q-select class="col-4" v-model="app.char.identity.size" :options="['Small', 'Medium', 'Large']" label="SIZE" />
+      <q-select
+        class="col-4"
+        v-model="app.char.identity.size"
+        :options="['Tiny', 'Small', 'Medium', 'Large', 'Massive']"
+        label="SIZE"
+      />
     </div>
     <q-input class="row" v-model="app.char.identity.homeland" label="HOMELAND" autogrow />
     <q-input class="row" v-model="app.char.identity.languages" label="LANGUAGES" autogrow />

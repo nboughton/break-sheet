@@ -20,6 +20,7 @@
       v-for="(a, i) in app.char.abl"
       :key="i"
       :caption="a.text"
+      :adversary="adversary"
     >
       <template v-slot:content>
         <div class="column">
@@ -52,6 +53,10 @@ import { create } from 'src/lib/create';
 
 import TitleBar from './TitleBar.vue';
 import CollapsibleSection from './CollapsibleSection.vue';
+
+defineProps<{
+  adversary?: boolean;
+}>();
 
 const app = useBreakStore();
 

@@ -20,7 +20,7 @@ export interface Character {
     calling: string;
     rank: number;
     species: string;
-    size: 'Small' | 'Medium' | 'Large';
+    size: 'Tiny' | 'Small' | 'Medium' | 'Large' | 'Massive';
     homeland: string;
     languages: string;
     history: string;
