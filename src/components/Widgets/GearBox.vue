@@ -50,6 +50,10 @@ const value = computed((): number => +app.char.inventory.base + modTotal(app.cha
 const filled = computed((): number => {
   let t = 0;
   app.char.inventory.slots.forEach((s) => (t += s.slots));
+
+  const wealth = +app.char.wealth.coins + +app.char.wealth.gems + +app.char.wealth.stones;
+  t += Math.floor(wealth / 100);
+
   return t;
 });
 
