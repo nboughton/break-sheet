@@ -66,6 +66,13 @@ export const create = {
       mods: [],
       injuries: '',
     },
+    mp: {
+      name: 'MP TOTAL',
+      subtitle: 'Resource for casting magic',
+      base: 0,
+      mods: [],
+      injuries: '',
+    },
     defense: {
       name: 'DEFENSE RATING',
       subtitle: 'Match or best this to harm me',

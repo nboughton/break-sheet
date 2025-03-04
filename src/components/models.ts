@@ -30,6 +30,7 @@ export interface Character {
   aptitudes: Aptitude[];
   attacks: Attacks;
   hearts: Hearts;
+  mp: MP;
   defense: Defense;
   speed: Speed;
   quirk: string;
@@ -72,6 +73,11 @@ export interface Weapon {
 }
 
 export interface Hearts extends SectionHeader {
+  mods: Mod[]; // bonuses/penalties
+  injuries: string;
+}
+
+export interface MP extends SectionHeader {
   mods: Mod[]; // bonuses/penalties
   injuries: string;
 }

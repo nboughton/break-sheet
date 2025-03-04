@@ -14,6 +14,11 @@
       </div>
 
       <div class="col-xs-12 col-sm-5 q-pa-sm">
+        <q-separator v-if="$q.screen.lt.sm" color="black" />
+        <mp-box />
+      </div>
+
+      <div class="col-xs-12 col-sm-5 q-pa-sm">
         <q-separator color="black" />
         <defense-box />
       </div>
@@ -32,6 +37,7 @@
 import TitleBar from './Widgets/TitleBar.vue';
 import DefenseBox from 'src/components/Widgets/DefenseBox.vue';
 import HeartsBox from 'src/components/Widgets/HeartsBox.vue';
+import MPBox from 'src/components/Widgets/MPBox.vue';
 import AttackBox from 'src/components/Widgets/AttackBox.vue';
 import SpeedBox from 'src/components/Widgets/SpeedBox.vue';
 </script>
