@@ -26,7 +26,7 @@ import { modTotal } from 'src/lib/util';
 import SectionHeader from './SectionHeader.vue';
 import CalcStatBox from './CalcStatBox.vue';
 import ModBox from './ModBox.vue';
-import mpTrack from './MPTrack.vue';
+import MpTrack from './MpTrack.vue';
 
 const app = useBreakStore();
 

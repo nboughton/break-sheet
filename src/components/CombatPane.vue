@@ -37,7 +37,7 @@
 import TitleBar from './Widgets/TitleBar.vue';
 import DefenseBox from 'src/components/Widgets/DefenseBox.vue';
 import HeartsBox from 'src/components/Widgets/HeartsBox.vue';
-import MPBox from 'src/components/Widgets/MPBox.vue';
+import MpBox from 'src/components/Widgets/MpBox.vue';
 import AttackBox from 'src/components/Widgets/AttackBox.vue';
 import SpeedBox from 'src/components/Widgets/SpeedBox.vue';
 </script>
