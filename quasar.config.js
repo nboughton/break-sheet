@@ -60,7 +60,7 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: '/apps/break-sheet/',
+      publicPath: '/apps/break-sheet-v7tv/',
       // analyze: true,
       // env: {},
       // rawDefine: {}
@@ -70,7 +70,7 @@ module.exports = configure(function (/* ctx */) {
       // distDir
 
       extendViteConf(viteConf) {
-        viteConf.base = '/apps/break-sheet/';
+        viteConf.base = '/apps/break-sheet-v7tv/';
       },
       // viteVuePluginOptions: {},
 

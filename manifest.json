@@ -4,8 +4,8 @@
   "manifest_version": 1,
   "action": {
     "title": "BREAK Sheet",
-    "icon": "/apps/break-sheet/icon.svg",
-    "popover": "/apps/break-sheet/",
+    "icon": "/apps/break-sheet-v7tv/icon.svg",
+    "popover": "/apps/break-sheet-v7tv/",
     "height": 600,
     "width": 450
   }
