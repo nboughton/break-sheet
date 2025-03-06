@@ -50,6 +50,9 @@
           v-ripple
         >
           <q-item-section @click="app.conf.char = i">{{ c.identity.name }}</q-item-section>
+          <q-item-section side>
+            <q-btn icon="mdi-content-copy" flat dense round @click="duplicate(i)" />
+          </q-item-section>
           <q-item-section v-if="app.characters.length > 1" side>
             <q-btn icon="delete" flat dense rounded @click="deleteCharacter(i)" />
           </q-item-section>
@@ -85,6 +88,15 @@
           </q-item-section>
           <q-item-section>
             <q-toggle label="Adversary" left-label v-model="app.char.adversary" />
+          </q-item-section>
+        </q-item>
+
+        <q-item>
+          <q-item-section avatar>
+            <q-icon name="mdi-cog" />
+          </q-item-section>
+          <q-item-section>
+            <q-toggle label="Ignore Currency Weight" left-label v-model="app.conf.ignoreCurrencyWt" />
           </q-item-section>
         </q-item>
 
@@ -164,9 +176,10 @@
 import { ref } from 'vue';
 
 import { useBreakStore } from 'src/stores/break-store';
-import { useQuasar } from 'quasar';
+import { uid, useQuasar } from 'quasar';
 import { create } from 'src/lib/create';
 import { AppStore } from 'src/components/models';
+import { copyStruct } from 'src/lib/util';
 
 const app = useBreakStore();
 
@@ -178,6 +191,13 @@ const deleteCharacter = (i: number) =>
       cancel: true,
     })
     .onOk(() => app.characters.splice(i, 1));
+
+const duplicate = (index: number) => {
+  const cp = copyStruct(app.characters[index]);
+  cp.id = uid();
+  cp.identity.name += ' copy';
+  app.characters.push(cp);
+};
 
 const showDataLoad = ref(false);
 const fileToLoad = ref(null);

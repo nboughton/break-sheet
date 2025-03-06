@@ -14,16 +14,16 @@
       </div>
 
       <div class="col-xs-12 col-sm-5 q-pa-sm">
-        <q-separator v-if="$q.screen.lt.sm" color="black" />
+        <q-separator color="black" />
         <mp-box />
       </div>
+
+      <q-separator v-if="$q.screen.gt.xs" vertical color="black" />
 
       <div class="col-xs-12 col-sm-5 q-pa-sm">
         <q-separator color="black" />
         <defense-box />
       </div>
-
-      <q-separator v-if="$q.screen.gt.xs" vertical color="black" />
 
       <div class="col-xs-12 col-sm-5 q-pa-sm">
         <q-separator color="black" />

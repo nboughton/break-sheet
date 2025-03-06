@@ -1,5 +1,15 @@
 import { uid } from 'quasar';
-import { Ability, Character, InventoryItem, Mod, Weapon } from 'src/components/models';
+import {
+  Ability,
+  AccessoryItem,
+  AccessorySlot,
+  AccessorySlots,
+  Character,
+  InventoryItem,
+  Mod,
+  Weapon,
+} from 'src/components/models';
+import { keys } from './util';
 
 export const create = {
   character: (): Character => ({
@@ -95,6 +105,7 @@ export const create = {
       worn: '',
       mods: [],
       slots: [],
+      accessories: create.accessories(),
     },
     abilities: '',
     abl: [],
@@ -134,4 +145,12 @@ export const create = {
     allegiance: 'None',
     text: '',
   }),
+
+  accessories: (): Record<AccessorySlot, AccessoryItem> => {
+    const a = {} as Record<AccessorySlot, AccessoryItem>;
+    keys(AccessorySlots).forEach((k) => {
+      a[k as AccessorySlot] = { text: '' };
+    });
+    return a;
+  },
 };

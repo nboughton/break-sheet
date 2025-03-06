@@ -25,6 +25,18 @@
       v-model="app.char.inventory.slots[i]"
       @delete="deleteSlot(i)"
     />
+
+    <div class="row items-center q-mt-sm">
+      <div class="col-shrink text-h6">ACCESSORIES</div>
+      <q-separator class="col" />
+    </div>
+
+    <accessory-entry
+      v-for="k in keys(AccessorySlots)"
+      :key="k"
+      v-model="app.char.inventory.accessories![k as AccessorySlot]"
+      :label="k"
+    />
   </div>
 </template>
 
@@ -34,7 +46,7 @@ import { computed } from 'vue';
 import { useQuasar } from 'quasar';
 import { useBreakStore } from 'src/stores/break-store';
 
-import { modTotal } from 'src/lib/util';
+import { modTotal, keys } from 'src/lib/util';
 import { create } from 'src/lib/create';
 
 import TitleBar from './TitleBar.vue';
@@ -42,6 +54,8 @@ import SectionHeader from './SectionHeader.vue';
 import CalcStatBox from './CalcStatBox.vue';
 import ModBox from './ModBox.vue';
 import InventoryEntry from './InventoryEntry.vue';
+import AccessoryEntry from './AccessoryEntry.vue';
+import { AccessorySlot, AccessorySlots } from '../models';
 
 const app = useBreakStore();
 
@@ -51,8 +65,10 @@ const filled = computed((): number => {
   let t = 0;
   app.char.inventory.slots.forEach((s) => (t += s.slots));
 
-  const wealth = +app.char.wealth.coins + +app.char.wealth.gems + +app.char.wealth.stones;
-  t += Math.floor(wealth / 100);
+  if (app.conf.ignoreCurrencyWt === false) {
+    const wealth = +app.char.wealth.coins + +app.char.wealth.gems + +app.char.wealth.stones;
+    t += Math.floor(wealth / 100);
+  }
 
   return t;
 });

@@ -2,6 +2,7 @@ export interface AppStore {
   conf: {
     char: number;
     tab: string;
+    ignoreCurrencyWt?: boolean;
   };
   characters: Character[];
 }
@@ -96,11 +97,16 @@ export interface Inventory extends SectionHeader {
   worn: string;
   mods: Mod[];
   slots: InventoryItem[];
+  accessories?: Record<AccessorySlot, AccessoryItem>;
 }
 
 export interface InventoryItem {
   name: string;
   slots: number;
+}
+
+export interface AccessoryItem {
+  text: string;
 }
 
 export interface Wealth {
@@ -119,3 +125,16 @@ export interface Allegiance {
   bright: number;
   gifts: string;
 }
+
+export enum AccessorySlots {
+  'Head',
+  'Face',
+  'Neck',
+  'Left Arm',
+  'Right Arm',
+  'Waist',
+  'Left Leg',
+  'Right Leg',
+}
+
+export type AccessorySlot = keyof typeof AccessorySlots;

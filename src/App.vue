@@ -18,7 +18,12 @@ onBeforeMount(() => {
     app.characters.push(create.character());
   }
 
+  // Populate new fields to ensure data parity
   app.characters.forEach((c, i) => {
+    if (!app.characters[i].inventory.accessories) {
+      app.characters[i].inventory.accessories = create.accessories();
+    }
+
     if (!app.characters[i].mp) {
       app.characters[i].mp = <MP>{
         name: 'MP TOTAL',
