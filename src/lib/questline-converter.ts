@@ -56,9 +56,7 @@ interface QuestlineAptitude {
   bonusText?: string;
 }
 
-function convertAptitudes(
-  aptitudesArray: Character['aptitudes']
-): Record<string, QuestlineAptitude> {
+function convertAptitudes(aptitudesArray: Character['aptitudes']): Record<string, QuestlineAptitude> {
   const aptitudes: Record<string, QuestlineAptitude> = {
     might: { value: '7', visible: true },
     deftness: { value: '7', visible: true },
@@ -93,9 +91,7 @@ function convertAptitudes(
         bonusValue = parts.join('/');
       }
 
-      const nonTraitMods = apt.mods.filter(
-        (mod) => mod.name && mod.name.toLowerCase().trim() !== 'trait'
-      );
+      const nonTraitMods = apt.mods.filter((mod) => mod.name && mod.name.toLowerCase().trim() !== 'trait');
       if (nonTraitMods.length > 0) {
         bonusText = nonTraitMods.map((mod) => mod.name.trim()).join(', ');
       }
@@ -176,10 +172,12 @@ function formatAbilityText(text: string): string {
   if (!text) return '';
 
   let formatted = formatPageRef(text);
-  formatted = formatted.replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  formatted = formatted
+    .replace(/\r\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
 
-  const hasBullets =
-    formatted.includes('\u001a') || formatted.includes('\u001b') || formatted.includes('◆');
+  const hasBullets = formatted.includes('\u001a') || formatted.includes('\u001b') || formatted.includes('◆');
 
   const lines = formatted.split('\n');
   const result: string[] = [];
@@ -216,7 +214,10 @@ function formatAbilityText(text: string): string {
         descriptionLines = [];
         inDescription = false;
       }
-      const cleaned = line.replace(/\u001b/g, '').replace(/◆/g, '').trim();
+      const cleaned = line
+        .replace(/\u001b/g, '')
+        .replace(/◆/g, '')
+        .trim();
       result.push('  - ' + cleaned);
     } else if (
       line.startsWith('Advantages') ||
@@ -461,6 +462,7 @@ function convertCharacter(source: Character): any {
 
   const backgroundParts: string[] = [];
   if (id.size) backgroundParts.push(`**Size:** ${id.size}`);
+  if (id.description) backgroundParts.push(id.description);
   const background = backgroundParts.join('\n\n');
 
   let defenseTotal = parseInt(String(source.defense?.base)) || 10;
@@ -688,9 +690,7 @@ function convertCharacter(source: Character): any {
           'speed-rating': {
             value: {
               visible: true,
-              value: convertSpeedRating(
-                source.speed?.selected || (source.speed?.base as string) || 'Average'
-              ),
+              value: convertSpeedRating(source.speed?.selected || (source.speed?.base as string) || 'Average'),
             },
           },
         },
