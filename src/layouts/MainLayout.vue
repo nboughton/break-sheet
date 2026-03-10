@@ -79,6 +79,18 @@
 
         <q-separator />
 
+        <q-item clickable v-ripple @click="app.exportQuestline">
+          <q-item-section avatar>
+            <q-icon name="mdi-sword-cross" />
+          </q-item-section>
+          <q-item-section>
+            Export to QuestlineVTT
+            <q-tooltip>Export character data as a QuestlineVTT .characters file</q-tooltip>
+          </q-item-section>
+        </q-item>
+
+        <q-separator />
+
         <q-item>
           <q-item-section avatar>
             <q-icon name="mdi-cog" />

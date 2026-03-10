@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { AppStore, Character } from 'src/components/models';
 import { exportFile } from 'quasar';
+import { convertToQuestline } from 'src/lib/questline-converter';
 
 export const useBreakStore = defineStore('break-sheet', {
   state: () =>
@@ -24,6 +25,16 @@ export const useBreakStore = defineStore('break-sheet', {
           characters: this.characters,
           conf: this.conf,
         })
+      );
+    },
+
+    exportQuestline() {
+      const now = new Date();
+      const pad = (n: number) => String(n).padStart(2, '0');
+      const dateStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+      exportFile(
+        `BreakCharacters-QuestlineVTT-${dateStr}.characters`,
+        convertToQuestline(this.characters)
       );
     },
 
