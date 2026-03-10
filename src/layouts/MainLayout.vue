@@ -88,6 +88,24 @@
           </q-item-section>
         </q-item>
 
+        <q-item>
+          <q-item-section avatar>
+            <q-icon name="mdi-cog" />
+          </q-item-section>
+          <q-item-section>
+            <q-toggle label="Dark Mode" left-label v-model="app.conf.dark" />
+          </q-item-section>
+        </q-item>
+
+        <q-item>
+          <q-item-section avatar>
+            <q-icon name="mdi-cog" />
+          </q-item-section>
+          <q-item-section>
+            <q-toggle label="Weightless Currency" left-label v-model="app.conf.ignoreCurrencyWt" />
+          </q-item-section>
+        </q-item>
+
         <q-separator />
 
         <q-item clickable v-ripple @click="showAbout = true">

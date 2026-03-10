@@ -2,6 +2,8 @@ export interface AppStore {
   conf: {
     char: number;
     tab: string;
+    dark?: boolean;
+    ignoreCurrencyWt?: boolean;
   };
   characters: Character[];
 }
