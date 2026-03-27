@@ -70,30 +70,46 @@ function convertAptitudes(aptitudesArray: Character['aptitudes']): Record<string
   }
 
   aptitudesArray.forEach((apt) => {
+    // Calculate total: base + trait + sum of mods
     let total = typeof apt.base === 'number' ? apt.base : parseInt(String(apt.base)) || 7;
+    const traitVal = typeof apt.trait === 'number' ? apt.trait : parseInt(String(apt.trait)) || 0;
+    total += traitVal;
     if (apt.mods && Array.isArray(apt.mods)) {
       apt.mods.forEach((mod) => {
         total += parseInt(String(mod.value)) || 0;
       });
     }
 
+    // Build bonusValue from trait + ALL mods, and bonusText from labels
     let bonusValue: string | null = null;
     let bonusText: string | null = null;
-    if (apt.mods && Array.isArray(apt.mods) && apt.mods.length > 0) {
-      if (apt.mods.length === 1) {
-        const val = parseInt(String(apt.mods[0].value)) || 0;
-        bonusValue = String(val);
-      } else {
-        const parts = apt.mods.map((mod) => {
-          const val = parseInt(String(mod.value)) || 0;
-          return val >= 0 ? `+${val}` : String(val);
-        });
-        bonusValue = parts.join('/');
-      }
 
-      const nonTraitMods = apt.mods.filter((mod) => mod.name && mod.name.toLowerCase().trim() !== 'trait');
-      if (nonTraitMods.length > 0) {
-        bonusText = nonTraitMods.map((mod) => mod.name.trim()).join(', ');
+    const bonusParts: number[] = [];
+    const textParts: string[] = [];
+
+    if (traitVal !== 0) {
+      bonusParts.push(traitVal);
+      textParts.push('Trait');
+    }
+
+    if (apt.mods && Array.isArray(apt.mods)) {
+      apt.mods.forEach((mod) => {
+        const val = parseInt(String(mod.value)) || 0;
+        bonusParts.push(val);
+        if (mod.name && mod.name.trim()) {
+          textParts.push(mod.name.trim());
+        }
+      });
+    }
+
+    if (bonusParts.length > 0) {
+      if (bonusParts.length === 1) {
+        bonusValue = String(bonusParts[0]);
+      } else {
+        bonusValue = bonusParts.map((v) => (v >= 0 ? `+${v}` : String(v))).join('/');
+      }
+      if (textParts.length > 0) {
+        bonusText = textParts.join(', ');
       }
     }
 
@@ -462,6 +478,28 @@ function convertCharacter(source: Character): any {
 
   const backgroundParts: string[] = [];
   if (id.size) backgroundParts.push(`**Size:** ${id.size}`);
+  if (source.hearts?.injuries && String(source.hearts.injuries).trim()) {
+    backgroundParts.push(`**Injuries:** ${String(source.hearts.injuries).trim()}`);
+  }
+  if (source.hearts?.mods && Array.isArray(source.hearts.mods) && source.hearts.mods.length > 0) {
+    const heartModLines = source.hearts.mods
+      .map((mod) => `${mod.name || 'Mod'}: ${parseInt(String(mod.value)) >= 0 ? '+' : ''}${mod.value}`)
+      .join(', ');
+    backgroundParts.push(`**Heart Mods:** ${heartModLines}`);
+  }
+  if (source.defense?.notes && String(source.defense.notes).trim()) {
+    backgroundParts.push(`**Defense Notes:** ${String(source.defense.notes).trim()}`);
+  }
+  if (source.defense?.mods && Array.isArray(source.defense.mods) && source.defense.mods.length > 0) {
+    const defModLines = source.defense.mods
+      .map((mod) => `${mod.name || 'Mod'}: ${parseInt(String(mod.value)) >= 0 ? '+' : ''}${mod.value}`)
+      .join(', ');
+    backgroundParts.push(`**Defense Mods:** ${defModLines}`);
+  }
+  if (source.speed?.mods && String(source.speed.mods).trim()) {
+    backgroundParts.push(`**Speed Notes:** ${String(source.speed.mods).trim()}`);
+  }
+  // Description text always last
   if (id.description) backgroundParts.push(id.description);
   const background = backgroundParts.join('\n\n');
 
@@ -576,7 +614,12 @@ function convertCharacter(source: Character): any {
   }
 
   const gifts = parseGifts(source.allegiance?.gifts, source.bonds, genId);
-  const heartsValue = parseInt(String(source.hearts?.base)) || 2;
+  let heartsValue = parseInt(String(source.hearts?.base)) || 2;
+  if (source.hearts?.mods && Array.isArray(source.hearts.mods)) {
+    source.hearts.mods.forEach((mod) => {
+      heartsValue += parseInt(String(mod.value)) || 0;
+    });
+  }
   const aptitudes = convertAptitudes(source.aptitudes);
 
   return {
@@ -683,7 +726,15 @@ function convertCharacter(source: Character): any {
           gems: parseInt(String(source.wealth?.gems)) || 0,
         },
         items: inventoryItems,
-        maxEncumbrance: parseInt(String(source.inventory?.base)) || 10,
+        maxEncumbrance: (() => {
+          let enc = parseInt(String(source.inventory?.base)) || 10;
+          if (source.inventory?.mods && Array.isArray(source.inventory.mods)) {
+            source.inventory.mods.forEach((mod) => {
+              enc += parseInt(String(mod.value)) || 0;
+            });
+          }
+          return enc;
+        })(),
       },
       'speed-rating': {
         attributes: {
